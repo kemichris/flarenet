@@ -62,13 +62,15 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-white text-black border-t border-dark">
-      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-12 md:flex-row md:items-end md:justify-between">
+    <footer className="bg-background  pb-4">
+      <div className=" flex max-w-7xl flex-col gap-10 px-6 py-12 md:flex-row md:items-end md:justify-between">
         {/* Logo + Copyright */}
-        <div className="flex flex-col gap-6">
-          <a href="/" className="w-fit">
+        <div className="flex flex-col lg:flex-row md:flex-row gap-4 items-center">
+          <a href="/" className="w-fit flex items-center gap-2 text-xl font-semibold text-primary">
             <img src={Logo} alt="Flare" className="w-10" />
+            Flare 
           </a>
+          <p className="text-2xl font-semibold">The blockchain for data</p>
         </div>
 
         {/* Social Links */}
@@ -87,7 +89,7 @@ export function Footer() {
           ))}
         </div>
       </div>
-      <p className="text-sm text-dark">
+      <p className="text-sm text-dark text-center">
         © Flare Network {new Date().getFullYear()}
       </p>
     </footer>

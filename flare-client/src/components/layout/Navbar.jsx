@@ -15,7 +15,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="flex items-center py-2 px-4 justify-between bg-white fixed w-full top-0">
+      <nav className="flex items-center py-2 px-4 justify-between bg-white fixed w-full top-0 z-50">
         <img src={Logo} alt="Logo" className="w-30 h-auto" />
 
         {/* Desktop Navigation */}

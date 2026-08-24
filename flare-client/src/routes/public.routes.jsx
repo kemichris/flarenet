@@ -1,14 +1,15 @@
 import { PublicLayout } from '../pages/layout/PublicLayout';
 
 import { Home } from '../pages/public/Home';
+import { Yield } from '../pages/public/Yield';
 
 
 export const publicRoutes = [
     
-    // {
-    //     path: '/forgot-password',
-    //     element: <ForgotPassword />
-    // },
+    {
+        path: '/yield',
+        element: <Yield />
+    },
     {
         element: <PublicLayout />,
         children: [
