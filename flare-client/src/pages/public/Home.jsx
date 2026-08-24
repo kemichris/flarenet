@@ -4,6 +4,7 @@ import { Hero } from "../../components/home/Hero"
 import { Marquee } from "../../components/home/Marquee"
 import { TechnologySection } from "../../components/home/TechnologySection"
 import { SecureSection } from "../../components/home/SecureSection"
+import { BuildSection } from "../../components/home/BuildSection"
 
 export function Home() {
     return (
@@ -13,6 +14,7 @@ export function Home() {
             <TechnologySection />
             <DataProviders />
             <SecureSection />
+            <BuildSection />
         </>
     )
 }
