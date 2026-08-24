@@ -7,7 +7,7 @@ import { Button } from '../common/Button';
 export function YieldHero() {
   return (
     <div
-      className="w-full h-screen bg-cover bg-center  flex flex-col items-center justify-between gap-2 px-4 pt-8 pb-16"
+      className="w-full h-screen bg-cover bg-center  flex flex-col items-center justify-between gap-2 px-4 pt-25 pb-16"
       style={{ backgroundImage: `url(${yieldImg})` }}
     >
         <div className='flex items-center p-4 rounded-4xl bg-[#642833]'>
