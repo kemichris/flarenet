@@ -36,6 +36,10 @@
     animation: marquee 25s linear infinite;
 }
 
+.image-marquee {
+    animation: marquee 30s linear infinite;
+}
+
 @keyframes marquee {
     from {
         transform: translateX(0);

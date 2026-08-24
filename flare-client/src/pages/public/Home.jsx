@@ -6,6 +6,7 @@ import { TechnologySection } from "../../components/home/TechnologySection"
 import { SecureSection } from "../../components/home/SecureSection"
 import { BuildSection } from "../../components/home/BuildSection"
 import { CTA } from "../../components/home/CTA"
+import { Community } from "../../components/home/Community"
 
 export function Home() {
     return (
@@ -17,6 +18,7 @@ export function Home() {
             <SecureSection />
             <BuildSection />
             <CTA />
+            <Community />
         </>
     )
 }
