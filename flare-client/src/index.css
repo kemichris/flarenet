@@ -2,27 +2,8 @@
 
 @theme {
   --color-primary: #E62058; /* red*/
-  /* --color-primary-1: #10A4E9;
-  --color-primary-2: #0184C7; /*light blue*/
-  /* --color-primary-3: #22C55E; 
-  --color-primary-4: #EF4444;
-  --color-primary-5: #EC4799;  */
-
-  /* --color-surface-1: #111827; Header & Sidebar */
-  /* --color-surface-2: #1F2937; Cards */
-
-  /* --color-background: #0F172A;
-
-  --color-text: #E5E7EB;
-  --color-text-muted: #9CA3AF;
-
-  --color-border: #374151; */
-
-  /* --gradient-main: linear-gradient(
-    to right,
-    #01F2937,
-    #111827
-  ); */
+  --color-dark: #777;
+  --color-background: #E7E7E7; 
 } 
 
 
@@ -49,4 +30,18 @@
     line-height: 1.5;
     font-size: 1rem;
   }
+}
+
+.marquee-track {
+    animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }

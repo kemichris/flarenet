@@ -4,12 +4,14 @@ import { useState } from "react";
 import { HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2";
 
 import { Button } from "../common/Button";
-// import { MobileMenu } from "./MobileMenu";
+import { MobileMenu } from "./MobileMenu";
 
 import Logo from "../../assets/flare-logo.png";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
@@ -17,9 +19,9 @@ export function Navbar() {
         <img src={Logo} alt="Logo" className="w-30 h-auto" />
 
         {/* Desktop Navigation */}
-        <ul className="flex gap-8 ">
+        <ul className="gap-8 hidden lg:flex">
           <li>
-            <Link className="hover:text-primary " to="/">Home</Link>
+            <Link className="hover:text-primary transition-all" to="/">Home</Link>
           </li>
 
           <li>
@@ -30,7 +32,7 @@ export function Navbar() {
           </li>
         </ul>
 
-        <Button text="Connect" to="/claim" />
+        <Button text="Connect" to="/claim" className='hidden lg:flex'/>
 
         {/* Mobile Menu Button */}
         <button
@@ -47,7 +49,7 @@ export function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      {/* <MobileMenu open={menuOpen} onClose={closeMenu} /> */}
+      <MobileMenu open={menuOpen} onClose={closeMenu} />
     </>
   );
 }

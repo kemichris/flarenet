@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 
-export function Button({ text, to }) {
+export function Button({ text, to, className = '' }) {
   return (
     <Link
-      className="btn"
       to={to}
-      className="bg-primary py-3 px-2 border-r-2 text-lg text-white"
+      className={`bg-primary py-2 px-4 font-medium rounded-lg text-lg text-white hover:scale-[.9] transition-transform duration-300 ${className}`}
     >
       {text}
     </Link>
