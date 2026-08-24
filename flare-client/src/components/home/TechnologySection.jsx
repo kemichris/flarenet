@@ -21,10 +21,10 @@ const technologies = [
 
 export function TechnologySection() {
   return (
-    <section className=" mt-16 px-8">
+    <section className=" mt-16 px-8 pb-16">
       <img src={Flare} alt="" className="w-10 mx-auto mb-6" />
       <div className="flex flex-col lg:flex-row md:flex-row items-center">
-        <div className="">
+        <div>
           <p className="uppercase text-dark text-sm mb-8 lg:text-left md:text-left text-center">Foundational technology</p>
 
           <div>
