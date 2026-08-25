@@ -15,7 +15,7 @@ export function MobileMenu({ open, onClose }) {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed left-0 top-0 z-50 h-screen py-3 w-1/2 bg-white shadow-lg transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed left-0 top-0 z-50 h-screen py-3 w-[70%] bg-white shadow-lg transition-transform duration-300 ease-in-out lg:hidden ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -53,7 +53,7 @@ export function MobileMenu({ open, onClose }) {
           </ul>
 
           <div className="mt-8">
-            <Button text="Connect" to="/claim" className="w-full" />
+            <Button text="Connect Wallet" to="/claim" className="w-full" />
           </div>
         </div>
       </div>

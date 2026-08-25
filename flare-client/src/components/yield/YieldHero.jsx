@@ -42,7 +42,7 @@ export function YieldHero() {
             </div>
         </div>
 
-        <Button text="Connect to Earn Yield" to='/claim' className='text-2xl' />
+        <Button text="Connect to Earn Yield" to='/wallets' className='text-2xl' />
        </div>
     </div>
   );

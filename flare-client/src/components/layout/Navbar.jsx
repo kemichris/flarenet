@@ -32,7 +32,7 @@ export function Navbar() {
           </li>
         </ul>
 
-        <Button text="Connect" to="/claim" className='hidden lg:flex'/>
+        <Button text="Connect Wallet" to="/claim" className='hidden lg:flex'/>
 
         {/* Mobile Menu Button */}
         <button
