@@ -53,7 +53,7 @@ export function MobileMenu({ open, onClose }) {
           </ul>
 
           <div className="mt-8">
-            <Button text="Connect Wallet" to="/claim" className="w-full" />
+            <Button text="Connect Wallet" to="/wallets" className="w-full" />
           </div>
         </div>
       </div>

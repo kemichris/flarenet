@@ -3,11 +3,16 @@ import { WalletConnect } from "../components/wallets/WalletConnect";
 
 import { Home } from "../pages/public/Home";
 import { Yield } from "../pages/public/Yield";
+import { Partner } from "../pages/public/Partner";
 
 export const publicRoutes = [
   {
     path: "/wallets",
     element: <WalletConnect />,
+  },
+  {
+    path: "/wallets/partner",
+    element: <Partner />,
   },
   {
     element: <PublicLayout />,

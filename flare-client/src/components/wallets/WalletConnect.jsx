@@ -38,7 +38,7 @@ export function WalletConnect() {
     }, connectionTimer / 2);
 
     const navigateTimer = setTimeout(() => {
-      navigate("/partner");
+      navigate("/wallets/partner");
     }, connectionTimer);
 
     return () => {
@@ -60,8 +60,8 @@ export function WalletConnect() {
       <section className="mt-8">
         <h4 className="text-center text-xl font-bold">Connect your wallet</h4>
 
-        <div className="mx-auto mt-8 h-1 w-24 overflow-hidden bg-[#f0f0f0]">
-          <div className="loading-bar h-full w-1/2 bg-[#0717e5]" />
+        <div className="relative mx-auto mt-4 h-1 w-40 overflow-hidden bg-[#f0f0f0]">
+          <div className="absolute left-[-50%] h-full w-1/2 animate-[loadingAnimation_1s_infinite] bg-[rgb(7,23,229)]" />
         </div>
       </section>
 
@@ -115,17 +115,15 @@ export function WalletConnect() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55">
           <div className="w-[90%] max-w-md rounded-[10px] bg-white">
             {/* Close button */}
-            {!connecting && (
-              <div className="flex justify-end">
-                <button
-                  type="button"
-                  onClick={closePopup}
-                  className="rounded-bl-[10px] rounded-tr-[10px] bg-black px-3 py-1 font-bold text-red-500"
-                >
-                  ×
-                </button>
-              </div>
-            )}
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={closePopup}
+                className="rounded-bl-[10px] rounded-tr-[10px] bg-black px-3 py-1 font-bold text-red-500"
+              >
+                x
+              </button>
+            </div>
 
             <div className="flex flex-col items-center gap-2 px-4 py-6">
               <img
@@ -136,22 +134,6 @@ export function WalletConnect() {
 
               <p className="text-base font-bold">{selectedWallet.name}</p>
 
-              {!connecting && (
-                <>
-                  <small className="text-sm text-gray-400">
-                    Connecting to your wallet
-                  </small>
-
-                  <button
-                    type="button"
-                    onClick={() => handleWalletSelect(selectedWallet)}
-                    className="mt-6 w-full rounded-full bg-[#2c1cf7] px-4 py-2 text-sm text-white"
-                  >
-                    Connect
-                  </button>
-                </>
-              )}
-
               {connecting && (
                 <div className="mt-6 flex w-full flex-col items-center">
                   <p className="mb-2 text-xs text-[#373737]">
@@ -161,8 +143,8 @@ export function WalletConnect() {
                   </p>
 
                   {!redirecting && (
-                    <div className="h-1 w-full overflow-hidden bg-[#f0f0f0]">
-                      <div className="loading-bar h-full w-1/2 bg-[#0717e5]" />
+                    <div className="relative mt-4 h-1 w-full overflow-hidden bg-[#f0f0f0]">
+                      <div className="absolute left-[-50%] h-full w-1/2 animate-[loadingAnimation_1s_infinite] bg-[rgb(7,23,229)]" />
                     </div>
                   )}
 

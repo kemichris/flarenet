@@ -12,7 +12,7 @@ export function Hero() {
         <img src={Flare} alt="" />
         <h1 className="text-2xl font-semibold">The Blockchain for Data</h1>
         <p className="text-dark text-center">Flare is a full-stack layer 1 solution designed for data intensive use cases.</p>
-        <Button text="Connect" to='/connect' />
+        <Button text="Connect" to='/wallets' />
     </section>
   );
 }
