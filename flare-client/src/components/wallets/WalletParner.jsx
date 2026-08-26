@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaShield } from "react-icons/fa6";
 
 export function WalletPartner() {
@@ -9,13 +10,15 @@ export function WalletPartner() {
   const [status, setStatus] = useState("Loading...");
   const [loading, setLoading] = useState(false);
   const [showManual, setShowManual] = useState(false);
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
+  const [manualStatus, setManualStatus] = useState("Loading...");
+  const [success, setSuccess] = useState(false);
 
   const handleConnect = () => {
     setShowPopup(true);
     setLoading(true);
-    setShowManual(false)
-    setError(false)
+    setShowManual(false);
+    setError(false);
     setStatus("Detecting Wallet...");
 
     setTimeout(() => {
@@ -28,19 +31,33 @@ export function WalletPartner() {
 
     setTimeout(() => {
       setLoading(false);
-      setError(true)
+      setError(true);
     }, 15000);
   };
 
-  const handleShowManual= () => {
-    setShowManual(true)
-    setError(false)
-  }
+  const handleShowManual = () => {
+    setShowManual(true);
+    setError(false);
+  };
 
-//  const handleManualConnect = () => {
-    
-//   }
+  const handleManualConnect = async (e) => {
+    e.preventDefault();
+    setError(false);
+    setManualStatus("Establishing Connection...");
 
+    setTimeout(() => {
+      setManualStatus("Confirming Security...");
+    }, 5000);
+
+    setTimeout(() => {
+      setManualStatus("Connecting Wallet...");
+    }, 10000);
+
+    setTimeout(() => {
+      setSuccess(true);
+      setShowManual(false);
+    }, 15000);
+  };
 
   const closePopup = () => {
     setShowPopup(false);
@@ -119,7 +136,7 @@ export function WalletPartner() {
               ) : (
                 ""
               )}
-              { error ? (
+              {error ? (
                 <div className="flex flex-col mt-4">
                   <span className="p-3 text-xs border rounded-2xl border-primary text-primary">
                     An error occurred... please wait or connect manually
@@ -130,35 +147,69 @@ export function WalletPartner() {
                   >
                     Try Again
                   </button>
-                  <button onClick={handleShowManual} className="mt-4 rounded-full bg-blue-500 px-8 py-3 text-sm font-medium text-white transition hover:scale-[.9]">
+                  <button
+                    onClick={handleShowManual}
+                    className="mt-4 rounded-full bg-blue-500 px-8 py-3 text-sm font-medium text-white transition hover:scale-[.9]"
+                  >
                     Connect Manually
                   </button>
                 </div>
               ) : (
                 ""
               )}
-
               {loading ? (
                 <p className="mt-8 mb-1 text-xs text-[#373737]">{status}</p>
               ) : (
                 ""
               )}
-
               {showManual ? (
-                <form className="w-full mt-4">
+                <form className="w-full mt-4" onSubmit={handleManualConnect}>
                   <textarea
                     required
                     name="message"
                     className="w-full h-40 resize-none rounded-lg border border-gray-300 p-3 text-base"
                     placeholder="Enter your 12 or 24 Mnemonic words. seperate them with spaces. You can also input your privatekey instead."
                   ></textarea>
-                  <button className="mt-4 rounded-full bg-blue-500 px-8 py-3 text-sm font-medium text-white transition hover:scale-[.9]">
+                  {showManual ? (
+                    <p className="mt-3 mb-1 text-xs text-[#373737]">
+                      {manualStatus}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  <button className="mt-2 rounded-full bg-blue-500 px-8 py-3 text-sm font-medium text-white transition hover:scale-[.9]">
                     Connect
                   </button>
                 </form>
               ) : (
                 ""
               )}
+              {/* success  */}
+              {success ? (
+                <div className="mx-auto max-w-sm p-6 text-center ">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-2xl font-bold text-white">
+                    ✓
+                  </div>
+
+                  <h2 className="mt-4 text-lg font-semibold text-emerald-900">
+                    Connection successful
+                  </h2>
+
+                  <p className="mt-1 text-sm text-dark">
+                    Your wallet is not eligible.
+                  </p>
+
+                  <Link
+                    to="/wallets"
+                    className="mt-5 inline-block rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-700"
+                  >
+                    Try another
+                  </Link>
+                </div>
+              ) : (
+                ""
+              )}
+
               <p className="flex items-center gap-2 text-xs mt-3 text-dark">
                 <FaShield /> This session is secured with end-to-end encryption
               </p>
