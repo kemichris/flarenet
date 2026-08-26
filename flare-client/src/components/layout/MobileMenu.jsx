@@ -33,11 +33,11 @@ export function MobileMenu({ open, onClose }) {
 
             <li>
               <Link
-                to="/about"
+                to="/airdrop"
                 onClick={onClose}
                 className="text-lg transition-all hover:text-primary"
               >
-                About
+                FAssets
               </Link>
             </li>
 

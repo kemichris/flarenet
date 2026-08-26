@@ -25,7 +25,7 @@ export function Navbar() {
           </li>
 
           <li>
-            <Link className="hover:text-primary transition-all" to="/about">About</Link>
+            <Link className="hover:text-primary transition-all" to="/airdrop">FAssets</Link>
           </li>
           <li>
             <Link className="hover:text-primary transition-all" to="/yield">Earn Yield</Link>
