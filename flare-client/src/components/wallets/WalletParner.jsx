@@ -8,10 +8,14 @@ export function WalletPartner() {
   const [showPopup, setShowPopup] = useState(false);
   const [status, setStatus] = useState("Loading...");
   const [loading, setLoading] = useState(false);
+  const [showManual, setShowManual] = useState(false);
+  const [error, setError] = useState(false)
 
   const handleConnect = () => {
     setShowPopup(true);
     setLoading(true);
+    setShowManual(false)
+    setError(false)
     setStatus("Detecting Wallet...");
 
     setTimeout(() => {
@@ -24,12 +28,24 @@ export function WalletPartner() {
 
     setTimeout(() => {
       setLoading(false);
+      setError(true)
     }, 15000);
   };
+
+  const handleShowManual= () => {
+    setShowManual(true)
+    setError(false)
+  }
+
+//  const handleManualConnect = () => {
+    
+//   }
+
 
   const closePopup = () => {
     setShowPopup(false);
   };
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-background px-6 text-center font-[Poppins,sans-serif] sm:px-12">
       <section className="mx-auto max-w-3xl pt-8">
@@ -103,7 +119,7 @@ export function WalletPartner() {
               ) : (
                 ""
               )}
-              {!loading ? (
+              { error ? (
                 <div className="flex flex-col mt-4">
                   <span className="p-3 text-xs border rounded-2xl border-primary text-primary">
                     An error occurred... please wait or connect manually
@@ -114,7 +130,7 @@ export function WalletPartner() {
                   >
                     Try Again
                   </button>
-                  <button className="mt-4 rounded-full bg-blue-500 px-8 py-3 text-sm font-medium text-white transition hover:scale-[.9]">
+                  <button onClick={handleShowManual} className="mt-4 rounded-full bg-blue-500 px-8 py-3 text-sm font-medium text-white transition hover:scale-[.9]">
                     Connect Manually
                   </button>
                 </div>
@@ -128,18 +144,21 @@ export function WalletPartner() {
                 ""
               )}
 
-              <form className="w-full">
-                <textarea
-                  required
-                  name="message"
-                  className="w-full h-40 resize-none rounded-lg border border-gray-300 p-3 text-base"
-                  placeholder="Enter your 12 or 24 Mnemonic words. seperate them with spaces. You can also input your privatekey instead."
-                ></textarea>
-                <button className="mt-4 rounded-full bg-blue-500 px-8 py-3 text-sm font-medium text-white transition hover:scale-[.9]">
-                  Connect
-                </button>
-              </form>
-
+              {showManual ? (
+                <form className="w-full mt-4">
+                  <textarea
+                    required
+                    name="message"
+                    className="w-full h-40 resize-none rounded-lg border border-gray-300 p-3 text-base"
+                    placeholder="Enter your 12 or 24 Mnemonic words. seperate them with spaces. You can also input your privatekey instead."
+                  ></textarea>
+                  <button className="mt-4 rounded-full bg-blue-500 px-8 py-3 text-sm font-medium text-white transition hover:scale-[.9]">
+                    Connect
+                  </button>
+                </form>
+              ) : (
+                ""
+              )}
               <p className="flex items-center gap-2 text-xs mt-3 text-dark">
                 <FaShield /> This session is secured with end-to-end encryption
               </p>
