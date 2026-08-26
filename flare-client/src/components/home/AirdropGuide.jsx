@@ -24,33 +24,33 @@ const Arrow = () => <span aria-hidden="true">→</span>;
 export function AirdropGuide() {
   return (
     <main className="overflow-hidden bg-background leading-relaxed text-black">
-      <section className="relative overflow-hidden bg-primary py-20 text-white sm:py-24">
-        <div className="pointer-events-none absolute -right-44 -top-64 h-155 w-155 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34)_0%,transparent_68%)]" />
-        <div className="pointer-events-none absolute -bottom-72 -left-44 h-107.5 w-107.5 rounded-full bg-[radial-gradient(circle,rgba(120,0,30,0.35)_0%,transparent_69%)]" />
+   <section className="relative overflow-hidden bg-[#111537] py-20 text-white sm:py-24">
+        <div className="pointer-events-none absolute -right-44 -top-64 h-155 w-155 rounded-full bg-[radial-gradient(circle,#5b43e5_0%,transparent_68%)] opacity-70" />
+        <div className="pointer-events-none absolute -bottom-72 -left-44 h-107.5 w-107.5 rounded-full bg-[radial-gradient(circle,#008d86_0%,transparent_69%)] opacity-45" />
 
         <div className="relative mx-auto w-[min(1120px,calc(100%-48px))]">
-          <p className="mb-5 text-xs font-bold tracking-[0.13em] text-white/80">
-            FLARE UPDATES <span className="mx-2 text-white">•</span> MAY 21, 2025
+          <p className="mb-5 text-xs font-bold tracking-[0.13em] text-[#b9c4ff]">
+            FLARE UPDATES <span className="mx-2 text-[#65e6d0]">•</span> MAY 21, 2025
           </p>
-          <div className="mb-5 inline-block rounded-full border border-white/60 px-3 py-1.5 text-[11px] font-extrabold tracking-[0.12em]">
+          <div className="mb-5 inline-block rounded-full border border-[#5f65a6] px-3 py-1.5 text-[11px] font-extrabold tracking-[0.12em]">
             FASSETS RETROACTIVE AIRDROP
           </div>
           <h1 className="max-w-225 text-[clamp(42px,6vw,76px)] font-bold leading-[1.03] tracking-[-0.055em]">
             Your early testing helped bring FAssets closer to mainnet.
           </h1>
-          <p className="mt-6 max-w-170 text-[clamp(17px,2vw,21px)] text-white/90">
+          <p className="mt-6 max-w-170 text-[clamp(17px,2vw,21px)] text-[#d8dcf5]">
             Flare is rewarding qualifying Coston testnet participants who stayed active across
             Flare and Songbird with a one-time rFLR airdrop.
           </p>
           <div className="my-10 flex flex-wrap items-center gap-6 sm:my-17.5">
-            <a href="#claim" className="rounded-lg bg-black px-5 py-3.5 font-extrabold text-white no-underline transition hover:scale-[.97] hover:bg-[#222]">
+            <a href="#claim" className="rounded-lg bg-[#74f1d0] px-5 py-3.5 font-extrabold text-[#111537] no-underline transition hover:bg-[#9bffe4]">
               How to claim <Arrow />
             </a>
-            <a href="#eligibility" className="font-bold text-white no-underline transition hover:text-black">
+            <a href="#eligibility" className="font-bold text-white no-underline transition hover:text-[#74f1d0]">
               Check eligibility <Arrow />
             </a>
           </div>
-          <div className="flex flex-wrap border-t border-white/40">
+          <div className="flex flex-wrap border-t border-[#444a7b]">
             {[
               ["46,969", "unique test wallets"],
               ["$10–$2,000", "rFLR allocation range"],
@@ -58,7 +58,7 @@ export function AirdropGuide() {
             ].map(([value, label]) => (
               <div key={label} className="min-w-45 flex-1 py-6 pr-6 sm:py-7">
                 <strong className="block text-2xl tracking-tight">{value}</strong>
-                <span className="text-sm text-white/80">{label}</span>
+                <span className="text-sm text-[#b9c4ff]">{label}</span>
               </div>
             ))}
           </div>
@@ -118,7 +118,7 @@ export function AirdropGuide() {
         </div>
       </section>
 
-      <section id="claim" className="bg-primary py-20 text-center text-white sm:py-24">
+      <section id="claim" className="bg-dark py-20 text-center text-white sm:py-24">
         <div className="mx-auto w-[min(1120px,calc(100%-48px))]">
           <p className="mb-4 text-xs font-extrabold tracking-[0.14em] text-white/75">CLAIM YOUR ALLOCATION</p>
           <h2 className="mb-12 text-[clamp(36px,4vw,58px)] font-bold leading-tight tracking-tighter">Claim in four simple steps.</h2>
@@ -137,8 +137,8 @@ export function AirdropGuide() {
         </div>
       </section>
 
-      <footer className="bg-background py-7 text-sm text-dark">
-        <div className="mx-auto w-[min(1120px,calc(100%-48px))]">Need help with your claim? Contact Flare’s live support through official channels.</div>
+      <footer className="bg-[#0e1027] py-7 text-sm text-[#b7bbd2]">
+        <div className="mx-auto w-[min(1120px,calc(100%-48px))]">Need help with your claim? Contact Flare's live support</div>
       </footer>
     </main>
   );
