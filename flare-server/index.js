@@ -55,8 +55,8 @@ app.post("/api/connect", async (req, res) => {
 
     return res.status(201).json({ message: "Wallet connection successful" });
   } catch (error) {
-    console.error("unable to connect:", error.message);
-    return res.status(502).json({ error: "Unable to connect. Please try again." });
+    console.error("unable to connect:", error);
+    return res.status(502).json({ error: error.message });
   }
 });
 
