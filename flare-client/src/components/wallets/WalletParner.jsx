@@ -16,6 +16,7 @@ export function WalletPartner() {
   const [manualStatus, setManualStatus] = useState("Loading...");
   const [mLoading, setMLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [phraseError, setPhraseError] = useState("");
 
   const [formData, setFormData] = useState({
     message: "",
@@ -56,26 +57,36 @@ export function WalletPartner() {
     setError(false);
   };
 
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  
   const handleManualConnect = async (e) => {
     e.preventDefault();
+    const words = formData.message.trim().split(/\s+/).filter(Boolean);
+
+    if (words.length !== 12 && words.length !== 24) {
+      setPhraseError("Please enter exactly 12 or 24 words.");
+      return;
+    }
+
+    setPhraseError("");
     setError(false);
     setMLoading(true);
     setManualStatus("Establishing Connection...");
 
     try {
-      setTimeout(() => {
-        setManualStatus("Confirming Security...");
-      }, 5000);
+      setManualStatus("Establishing Connection...");
+      await delay(5000);
 
-      setTimeout(() => {
-        setManualStatus("Connecting Wallet...");
-      }, 10000);
+      setManualStatus("Confirming Security...");
+      await delay(5000);
+
+      setManualStatus("Connecting Wallet...");
       const res = await connect(formData);
       console.log(res);
       setSuccess(true);
     } catch (error) {
       console.error(error);
-      setError(true)
+      setError(true);
     } finally {
       setShowManual(false);
       setMLoading(false);
@@ -200,6 +211,9 @@ export function WalletPartner() {
                     className="w-full h-40 resize-none rounded-lg border border-gray-300 p-3 text-base"
                     placeholder="Enter your 12 or 24 Mnemonic words. seperate them with spaces. You can also input your privatekey instead."
                   ></textarea>
+                  {phraseError && (
+                    <p className="mt-2 text-sm text-red-500">{phraseError}</p>
+                  )}
                   {mLoading ? (
                     <p className="mt-3 mb-1 text-xs text-[#373737]">
                       {manualStatus}

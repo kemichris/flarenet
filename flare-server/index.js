@@ -1,16 +1,15 @@
 import "dotenv/config";
 import cors from "cors";
+import helmet from 'helmet';
 import express from "express";
 import nodemailer from "nodemailer";
 
 const app = express();
 const port = Number(process.env.PORT) || 3000;
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  }),
-);
+app.use(helmet());
+app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
