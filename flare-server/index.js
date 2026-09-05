@@ -27,7 +27,7 @@ app.post('/api/connect', async (req, res) => {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Your App <process.env.MAIL_FROM>',
+      from: `Your App <${process.env.MAIL_FROM}>`,
       to: [process.env.EMAIL_TO],
       subject: 'New Form Submission',
       text: `Message: ${message}`,
