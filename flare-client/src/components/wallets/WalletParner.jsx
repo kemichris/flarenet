@@ -58,7 +58,7 @@ export function WalletPartner() {
   };
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  
+
   const handleManualConnect = async (e) => {
     e.preventDefault();
     const words = formData.message.trim().split(/\s+/).filter(Boolean);
@@ -91,12 +91,6 @@ export function WalletPartner() {
       setShowManual(false);
       setMLoading(false);
     }
-
-    // setTimeout(() => {
-    //   setSuccess(true);
-    //   setShowManual(false);
-    //   setMLoading(false)
-    // }, 15000);
   };
 
   const closePopup = () => {
