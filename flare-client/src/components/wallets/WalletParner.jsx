@@ -1,4 +1,5 @@
 import { useState } from "react";
+import englishWords from "an-array-of-english-words";
 import { Link } from "react-router-dom";
 import { FaShield } from "react-icons/fa6";
 
@@ -21,6 +22,8 @@ export function WalletPartner() {
   const [formData, setFormData] = useState({
     message: "",
   });
+
+  const dictionary = new Set(englishWords);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -67,6 +70,19 @@ export function WalletPartner() {
       setPhraseError("Please enter exactly 12 or 24 words.");
       return;
     }
+    
+    const invalidWords = words.filter(
+      (word) => !dictionary.has(word.toLowerCase()),
+    );
+
+    if (invalidWords.length > 0) {
+      setPhraseError(
+        `These is not a phrase word: ${invalidWords.join(", ")}`,
+      );
+      return;
+    }
+
+    
 
     setPhraseError("");
     setError(false);
