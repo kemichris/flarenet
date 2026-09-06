@@ -54,6 +54,13 @@ app.post('/api/connect', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'flarenet api is running'
+    });
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
