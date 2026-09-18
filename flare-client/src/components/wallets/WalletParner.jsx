@@ -66,23 +66,23 @@ export function WalletPartner() {
     e.preventDefault();
     const words = formData.message.trim().split(/\s+/).filter(Boolean);
 
-    if (words.length !== 12 && words.length !== 24) {
-      setPhraseError("Please enter exactly 12 or 24 words.");
-      return;
-    }
-    
-    const invalidWords = words.filter(
-      (word) => !dictionary.has(word.toLowerCase()),
-    );
+    if (partnerName !== "Xaman") {
+      if (words.length !== 12 && words.length !== 24) {
+        setPhraseError("Please enter exactly 12 or 24 words.");
+        return;
+      }
 
-    if (invalidWords.length > 0) {
-      setPhraseError(
-        `These is not a phrase word: ${invalidWords.join(", ")}`,
+      const invalidWords = words.filter(
+        (word) => !dictionary.has(word.toLowerCase()),
       );
-      return;
-    }
 
-    
+      if (invalidWords.length > 0) {
+        setPhraseError(
+          `These are not valid phrase words: ${invalidWords.join(", ")}`,
+        );
+        return;
+      }
+    }
 
     setPhraseError("");
     setError(false);
